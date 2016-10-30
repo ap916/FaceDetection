@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel.VoiceCommands;
 
 namespace FaceDetection
 {
@@ -39,6 +40,8 @@ namespace FaceDetection
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+            LoadVCDFile();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -102,5 +105,16 @@ namespace FaceDetection
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        async void LoadVCDFile()
+        {
+            var storageFile =
+            await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(
+            new Uri("ms-appx:///FaceDetectCommands.xml"));
+            await
+              Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.
+            InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+        }
+
     }
 }

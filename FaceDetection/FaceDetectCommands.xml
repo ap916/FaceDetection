@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+  <CommandSet xml:lang="en-us" Name="FaceDetectCommandSet_en-us">
+    <CommandPrefix> FaceDetection </CommandPrefix>
+    <Example> Find Friends </Example>
+
+    <Command Name="FindFriends">
+      <Example> Find Friends </Example>
+      <ListenFor> Find Friends </ListenFor>
+      <Feedback> Searching for friends around you </Feedback>
+      <Navigate/>
+    </Command>
+
+  </CommandSet>
+
+</VoiceCommands>
